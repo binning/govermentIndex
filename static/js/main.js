@@ -1,4 +1,5 @@
 $(function () {
+    mainMethods.init();
     //判断滚动条位置
     mainMethods.listerScroll();
     //登录
@@ -16,8 +17,16 @@ $(function () {
 });
 
 var mainMethods = {
+    init:function(){
+        console.log(localStorage.getItem('phone'))
+        var username = localStorage.getItem('phone');
+        // if(username.length >0){
+        //     $("#login").hide();
+        //     $('#register').hide();
+        // }
+    },
     //监听滚动条
-    listerScroll:function() {
+    listerScroll: function () {
         $(window).scroll(function () {
             var num = $(window).scrollTop();
             if (num > 80) {
@@ -29,9 +38,12 @@ var mainMethods = {
         });
     },
     //点击登录
-    login: function(){
+    login: function () {
+        var _this = this;
         $('#login').on('click', () => {
             console.log('登录');
+            $('.login-tit').addClass('active');
+            $('.register-tit').removeClass('active');
             $(".modal-box").show();
             $('.login-type').show();
         });
@@ -61,16 +73,103 @@ var mainMethods = {
             $('.form-body').hide();
             $('.login-type').show();
         });
+        //用户登录表单提交
+        $.validator.setDefaults({
+            submitHandler: function (index, param) {
+                console.log(index, param.delegateTarget.id)
+                //验证成功后，登录成功
+                $(".modal-box").hide();
+                $('.login-type').hide();
+                $('.register-type').hide();
+                _this.addCookie('phone',$('#firstPhone').val(),2);
+            }
+        });
+        $("#signupForm").validate({
+            rules: {
+                firstPhone: "required",
+                firstPassword: {
+                    required: true,
+                    minlength: 5
+                },
+            },
+            messages: {
+                firstPhone: "请输入您的手机号",
+                firstPassword: {
+                    required: "请输入密码",
+                    minlength: "密码最少5位"
+                },
+            }
+        });
+        $("#registerForm").validate({
+            rules: {
+                secondPhone: "required",
+                firstIdenty: "required",
+                setPassword: {
+                    required: true,
+                    minlength: 5
+                },
+                confirmPassword: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#setPassword"
+                },
+            },
+            messages: {
+                secondPhone: "请输入您的手机号",
+                firstIdenty: "请输入验证码",
+                setPassword: {
+                    required: "请输入密码",
+                    minlength: "密码最少5位"
+                },
+                confirmPassword: {
+                    required: "请再次输入密码",
+                    minlength: "密码最少5位",
+                    equalTo: "两次输入密码不一致"
+                }
+            }
+        });
         // 输入用户密码，登录
-        $('#loain-submit').on('click', function () {
+        $('#login-submit').on('click', function () {
             //验证成功后，登录成功
             $(".modal-box").hide();
             $('.login-type').hide();
             $('.register-type').hide();
         })
     },
+    addCookie: function (name, value, days) {
+        var oDate=new Date();
+        oDate.setDate(oDate.getDate()+days);   //days为保存时间长度
+        document.cookie = name+'='+value+';expires='+oDate;
+        localStorage.setItem(name,value)
+    },
+    getCookieValue: function (name) { /**获取cookie的值，根据cookie的键获取值**/
+        //用处理字符串的方式查找到key对应value
+        var name = escape(name);
+        //读cookie属性，这将返回文档的所有cookie
+        var allcookies = document.cookie;
+        //查找名为name的cookie的开始位置
+        name += "=";
+        var pos = allcookies.indexOf(name);
+        //如果找到了具有该名字的cookie，那么提取并使用它的值
+        if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
+            var start = pos + name.length; //cookie值开始的位置
+            var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
+            if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
+            var value = allcookies.substring(start, end); //提取cookie的值
+            return (value); //对它解码      
+        } else { //搜索失败，返回空字符串
+            return "";
+        }
+
+    },
+    deleteCookie: function () {/**根据cookie的键，删除cookie，其实就是设置其失效**/
+        var name = escape(name);
+        var expires = new Date(0);
+        path = path == "" ? "" : ";path=" + path;
+        document.cookie = name + "=" + ";expires=" + expires.toUTCString() + pat
+    },
     //点击注册
-    register: function(){
+    register: function () {
         $('#register').on('click', () => {
             console.log('注册')
             $(".modal-box").show();
@@ -78,10 +177,11 @@ var mainMethods = {
             $('.register-type').show();
             $('.login-tit').removeClass('active');
             $('.register-tit').addClass('active');
-        })
+        });
+        //表单验证
     },
     // 隐藏弹窗
-    hideModel: function() {
+    hideModel: function () {
         $('.layer').on('click', () => {
             $('.has-return').hide();
             $('.password-type').hide();
@@ -109,15 +209,20 @@ var mainMethods = {
             var myidentify = setInterval(function () {
                 if (delay < 0) {
                     tag.attr('disabled', false);
-                    tag.css({ 'background-color': " #03DE6D", "color": "#fff" });
+                    tag.css({
+                        'background-color': " #03DE6D",
+                        "color": "#fff"
+                    });
                     tag.val("получить доступ ");
                     delay = 60;
                     _this.identifySend();
                     clearInterval(myidentify);
-                }
-                else {
+                } else {
                     tag.attr('disabled', true);
-                    tag.css({ 'background-color': "#E8E8E8", "color": "#5A5A5A" });
+                    tag.css({
+                        'background-color': "#E8E8E8",
+                        "color": "#5A5A5A"
+                    });
                     tag.val("重新发送(" + delay + "s)");
                     delay--;
                 }
@@ -149,7 +254,9 @@ var mainMethods = {
         });
         //  置顶
         $('#gotop').on('click', function () {
-            $('html,body').animate({scrollTop: 0},600);
+            $('html,body').animate({
+                scrollTop: 0
+            }, 600);
 
         })
     }

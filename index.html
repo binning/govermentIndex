@@ -3,145 +3,155 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- <meta id="i18n_pagename" content="页面名(对应语言包的语言文件名)"> -->
+    <meta id="i18n_pagename" content="index-common">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>盘石金融</title>
+    <title class="i18n" name='title'></title>
     <link rel="stylesheet" href="static/css/index.css">
     <link rel="stylesheet" href="static/css/main.css">
 </head>
 
 <body>
-    <!-- 头部 -->
-    <header class="header">
-        <ul>
-            <li class="index-name">
-                <a class="tit">盘石金融</a>
-            </li>
-            <li>
-                <a href="#" class="tit nav-list">首页</a>
-            </li>
-            <li>
-                <a href="apply-loan.html" class="tit nav-list">申请贷款</a>
-            </li>
-            <!-- <li>
+    <div id="app">
+        <!-- 头部 -->
+        <header class="header">
+            <ul>
+                <li class="index-name">
+                    <a class="tit i18n" name="pName">盘石金融</a>
+                </li>
+                <li>
+                    <a href="#" class="tit nav-list i18n" name="headerIndex">首页</a>
+                </li>
+                <li>
+                    <a href="apply-loan.html" class="tit nav-list i18n" name="applyLoan">申请贷款</a>
+                </li>
+                <!-- <li>
                 <a href="personal-center.html" class="tit nav-list">个人中心</a>
             </li> -->
-            <li class="move-left">
-                <a href="personal-center.html" class="tit nav-list">个人中心</a>
-                <a href="#" id="login">登录</a>/
-                <a href="#" id="register">注册</a>
-            </li>
-        </ul>
-    </header>
-    <!-- 正文 -->
-    <section class="main-content">
-        <!-- 介绍 -->
-        <div class="head-top">
-            <div class="info-item-box">
-                <ul>
-                    <li class="item-list">
-                        <img src="static/img/diya.png" alt="">
-                        <div class="detail-box">
-                            <p>无抵押</p>
-                            <span>信用借款，无需任何抵押</span>
-                        </div>
-                    </li>
-                    <li class="item-list">
-                        <img src="static/img/sudu.png" alt="">
-                        <div class="detail-box">
-                            <p>速度快</p>
-                            <span>30秒审批、3分钟到账</span>
-                        </div>
-                    </li>
-                    <li class="item-list margin-space">
-                        <img src="static/img/lilv.png" alt="">
-                        <div class="detail-box">
-                            <p>利率低</p>
-                            <span>日利率最低0.02%</span>
-                        </div>
-                    </li>
-                    <li class="item-list margin-space">
-                        <img src="static/img/cunqu.png" alt="">
-                        <div class="detail-box">
-                            <p>灵活还款</p>
-                            <span>还款方式无限制，可随时还款</span>
-                        </div>
-                    </li>
-                </ul>
-                <div class="maximum-amount">
-                    <p class="fir-tit">最高额度</p>
-                    <p class="sec-tit">300000.00
-                        <span>RUB</span>
-                    </p>
-                    <a href="apply-loan.html" class="btn white-btn">申请贷款</a>
-                </div>
-            </div>
-        </div>
-        <!-- 放款流程 -->
-        <div class="content-list">
-            <div class="content-title">
-                <div class="bot bot-left">
-                    <span></span>
-                </div>
-                <span class="center-title">放款流程</span>
-                <div class="bot bot-right">
-                    <span></span>
-                </div>
-            </div>
-            <div class="lending-process">
-                <ul>
-                    <li class="img-content">
-                        <img src="static/img/realName.png" alt="">
-                        <p>实名认证</p>
-                    </li>
-                    <li class="no-img-content">
-                        <img src="static/img/right_row.png" alt="">
-                    </li>
-                    <li class="img-content">
-                        <img src="static/img/edu.png" alt="">
-                        <p>提交征信 </p>
-                    </li>
-                    <li class="no-img-content">
-                        <img src="static/img/right_row.png" alt="">
-                    </li>
-                    <li class="img-content">
-                        <img src="static/img/credit.png" alt="">
-                        <p>获得额度</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- 客户分享 -->
-        <div class="user-share">
-            <div class="content-title">
-                <div class="bot bot-left">
-                    <span></span>
-                </div>
-                <span class="center-title">客户分享</span>
-                <div class="bot bot-right">
-                    <span></span>
-                </div>
-            </div>
-            <div class="user-box" id="user-box">
-                <div class="user-list">
-                    <div class="money-num">
-                        5000RUN
-                    </div>
-                    <div class="head-img-box">
-                        <div>
-                            <img src="static/img/is09at443.png" alt="">
-                        </div>
-                        <div>
-                            <p class="user-name">Peggie Goodwin</p>
-                            <p class="last-time">2018/08/28</p>
-                        </div>
-                    </div>
-                    <div class="user-detail">
-                        <p>Сделать данную страницу стартовойСделать данную страницу стартовойСделать данную страницу стартовойСделать
-                            данную страницу стартовойСделать данную страницу стар</p>
+                <li class="move-left">
+                    <a href="personal-center.html" class="tit nav-list i18n" name="psesonCenter">个人中心</a>
+                    <a href="#" id="login" @click="userLogin" class="i18n" name="userLogin">登录</a>/
+                    <a href="#" id="register" class="i18n" name="register">注册</a>                   
+                        <a class="lan2">
+                          <label class="i18n" name="lan"></label>
+                            <select id="language">
+                                <option value="zh-CN">中文简体</option>
+                                <option value="zh-TW">中文繁體</option>
+                                <option value="en">English</option>
+                            </select>
+                        </a>
+                </li>
+            </ul>
+        </header>
+        <!-- 正文 -->
+        <section class="main-content">
+            <!-- 介绍 -->
+            <div class="head-top">
+                <div class="info-item-box">
+                    <ul>
+                        <li class="item-list">
+                            <img src="static/img/diya.png" alt="">
+                            <div class="detail-box">
+                                <p class="i18n" name="nodiya">无抵押</p>
+                                <span class="i18n" name="nodiyadetail">信用借款，无需任何抵押</span>
+                            </div>
+                        </li>
+                        <li class="item-list">
+                            <img src="static/img/sudu.png" alt="">
+                            <div class="detail-box">
+                                <p class="i18n" name="speedfast">速度快</p>
+                                <span class="i18n" name='speedfastdetail'>30秒审批、3分钟到账</span>
+                            </div>
+                        </li>
+                        <li class="item-list margin-space">
+                            <img src="static/img/lilv.png" alt="">
+                            <div class="detail-box">
+                                <p class="i18n" name="lilv">利率低</p>
+                                <span class="i18n" name="lilvdetail">日利率最低0.02%</span>
+                            </div>
+                        </li>
+                        <li class="item-list margin-space">
+                            <img src="static/img/cunqu.png" alt="">
+                            <div class="detail-box">
+                                <p class="i18n" name='linghuo'>灵活还款</p>
+                                <span class="i18n" name="linghuodetail">还款方式无限制，可随时还款</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="maximum-amount">
+                        <p class="fir-tit i18n" name="hightMoney">最高额度</p>
+                        <p class="sec-tit">300000.00
+                            <span>RUB</span>
+                        </p>
+                        <a href="apply-loan.html" class="btn white-btn i18n" name="applayLoan">申请贷款</a>
                     </div>
                 </div>
-                <div class="user-list">
+            </div>
+            <!-- 放款流程 -->
+            <div class="content-list">
+                <div class="content-title">
+                    <div class="bot bot-left">
+                        <span></span>
+                    </div>
+                    <span class="center-title i18n" name="lendingprocess">放款流程</span>
+                    <div class="bot bot-right">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="lending-process">
+                    <ul>
+                        <li class="img-content">
+                            <img src="static/img/realName.png" alt="">
+                            <p class="i18n" name="preventsusers">实名认证</p>
+                        </li>
+                        <li class="no-img-content">
+                            <img src="static/img/right_row.png" alt="">
+                        </li>
+                        <li class="img-content">
+                            <img src="static/img/edu.png" alt="">
+                            <p class="i18n" name="submitNot">提交征信 </p>
+                        </li>
+                        <li class="no-img-content">
+                            <img src="static/img/right_row.png" alt="">
+                        </li>
+                        <li class="img-content">
+                            <img src="static/img/credit.png" alt="">
+                            <p class="i18n" name="getlimit">获得额度</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 客户分享 -->
+            <div class="user-share">
+                <div class="content-title">
+                    <div class="bot bot-left">
+                        <span></span>
+                    </div>
+                    <span class="center-title i18n" name="userShare">客户分享</span>
+                    <div class="bot bot-right">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="user-box" id="user-box">
+                    <div class="user-list" v-for="list in items">
+                        <div class="money-num">
+                            {{list.num}}
+                        </div>
+                        <div class="head-img-box">
+                            <div>
+                                <img :src="list.imgurl" alt="">
+                            </div>
+                            <div>
+                                <p class="user-name">{{list.name}}</p>
+                                <p class="last-time">{{list.date}}</p>
+                            </div>
+                        </div>
+                        <div class="user-detail">
+                            <p>{{list.content}}</p>
+                        </div>
+                    </div>
+                    <!-- <div class="user-list">
                     <div class="money-num">
                         12000RUN
                     </div>
@@ -195,183 +205,169 @@
                     <div class="user-detail">
                         <p>Сделать данную страницу стартовойСделать данную страницу стартовойСделать данную страницу стартовой</p>
                     </div>
+                </div> -->
                 </div>
-                
-            </div>
-            <div class="show-more">
-                <a id="show-more" class="btn black-btn">显示更多</a>
-            </div>
-        </div>
-        <!-- 关于我们 -->
-        <div>
-            <div class="content-title">
-                <div class="bot bot-left">
-                    <span></span>
-                </div>
-                <span class="center-title">关于我们</span>
-                <div class="bot bot-right">
-                    <span></span>
+                <div class="show-more">
+                    <a id="show-more" class="i18n btn black-btn" @click='showMore' name="showMore"></a>
                 </div>
             </div>
-            <div class="about-us">
-
+            <!-- 关于我们 -->
+            <div>
+                <div class="content-title">
+                    <div class="bot bot-left">
+                        <span></span>
+                    </div>
+                    <span class="center-title"></span>
+                    <div class="bot bot-right">
+                        <span>                 
+                        </span>
+                    </div>
+                </div>
+                <div class="about-us">
+                   
+                </div>
             </div>
-        </div>
-    </section>
-    <!-- 底部 -->
-    <div class="footers">
-        <div class="foots-box">
-            <div class="foots-list">
-                <p>E-mail</p>
-                <span>52661262@adpanshi.com</span>
-            </div>
-            <div class="foots-list">
-                <p>许可证</p>
-                <span>№1460 от 24.10.2014 г.</span>
-            </div>
-            <div class="foots-list">
-                <p>版权所有</p>
-                <span>© 2006-2018, ПАО КБ «Восточный»</span>
-            </div>
-        </div>
-    </div>
-    <!-- 右下角固定列表 -->
-    <div class="foot-tips">
-        <div>
-            <ul>
-                <li class="tips-item">
-                    <img src="static/img/app.png" alt="">
-                </li>
-                <li class="tips-item">
-                    <img src="static/img/server.png" alt="" title="客服">
-                </li>
-                <li class="tips-item">
-                    <img src="static/img/edit.png" alt="" title="反馈">
-                </li>
-                <li class="tips-item" id="gotop">
-                    <img src="static/img/setop.png" alt="" title="置顶">
-                </li>
-            </ul>
-            <div class="hover-box">
-                二维码
+        </section>
+        <!-- 底部 -->
+        <div class="footers">
+            <div class="foots-box">
+                <div class="foots-list">
+                    <p>E-mail</p>
+                    <span>52661262@adpanshi.com</span>
+                </div>
+                <div class="foots-list">
+                    <p>许可证</p>
+                    <span>№1460 от 24.10.2014 г.</span>
+                </div>
+                <div class="foots-list">
+                    <p>版权所有</p>
+                    <span>© 2006-2018, ПАО КБ «Восточный»</span>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- 弹出层 -->
-    <div class="modal-box">
-        <div class="layer"></div>
-        <div class="login-form">
-            <div class="form-head">
-                <div class="no-return">
-                    <a href="#" class="login-tit active">
-                        <span>登录</span>
-                    </a>
-                    <a href="#" class="register-tit">
-                        <span>注册</span>
-                    </a>
-                    <img src="static/img/close.png" class="default clearfix">
-                </div>
-                <div class="has-return">
-                    <img src="static/img/return.png" class="return-icon">
-                    <span class="reset-tit">重置密码</span>
-                    <img src="static/img/close.png" class="default clearfix">
+        <!-- 右下角固定列表 -->
+        <div class="foot-tips">
+            <div>
+                <ul>
+                    <li class="tips-item">
+                        <img src="static/img/app.png" alt="">
+                    </li>
+                    <li class="tips-item">
+                        <img src="static/img/server.png" alt="" title="客服">
+                    </li>
+                    <li class="tips-item">
+                        <img src="static/img/edit.png" alt="" title="反馈">
+                    </li>
+                    <li class="tips-item" id="gotop">
+                        <img src="static/img/setop.png" alt="" title="置顶">
+                    </li>
+                </ul>
+                <div class="hover-box">
+                    二维码
                 </div>
             </div>
-            <div class="form-body login-type">
-                <div class="input-box">
-                    <p class="label-name">手机号</p>
-                    <input class="input" type="text" placeholder="请输入手机号">
+        </div>
+        <!-- 弹出层 -->
+        <div class="modal-box">
+            <div class="layer"></div>
+            <div class="login-form">
+                <div class="form-head">
+                    <div class="no-return">
+                        <a href="#" class="login-tit active">
+                            <span>登录</span>
+                        </a>
+                        <a href="#" class="register-tit">
+                            <span>注册</span>
+                        </a>
+                        <img src="static/img/close.png" class="default clearfix">
+                    </div>
+                    <div class="has-return">
+                        <img src="static/img/return.png" class="return-icon">
+                        <span class="reset-tit">重置密码</span>
+                        <img src="static/img/close.png" class="default clearfix">
+                    </div>
                 </div>
-                <div class="input-box">
-                    <p class="label-name">密码</p>
-                    <input class="input" type="text" placeholder="请输入密码">
+                <!-- 登录 -->
+                <div class="form-body login-type">
+                    <form class="cmxform" id="signupForm">
+                        <fieldset>
+                            <div class="input-box">
+                                <label for="firstPhone" class="label-name">手机号</label>
+                                <input id="firstPhone" name="firstPhone" class="input" type="text" placeholder="请输入手机号">
+                            </div>
+                            <div class="input-box">
+                                <label for="firstPassword" class="label-name">密码</label>
+                                <input name="firstPassword" id="firstPassword" class="input" type="text" placeholder="请输入密码">
+                            </div>
+                            <a href="#" class="forget-password">忘记密码</a>
+                            <!-- <a href="#" id="login-submit" class="modal-btn">登录</a> -->
+                            <!-- <input type="reset" name="reset" style="display: none;" /> -->
+                            <input class="modal-btn submit" type="submit" value="登录">
+                        </fieldset>
+                    </form>
                 </div>
-                <a href="#" class="forget-password">忘记密码</a>
-                <a href="#" class="modal-btn">登录</a>
-            </div>
-            <div class="form-body register-type">
-                <div class="input-box">
-                    <p class="label-name">手机号</p>
-                    <input class="input" type="text" placeholder="请输入手机号">
+                <!-- 注册 -->
+                <div class="form-body register-type">
+                    <form class="cmxform" id="registerForm" method="get" action="">
+                        <fieldset>
+                            <div class="input-box">
+                                <label class="label-name" for="secondPhone">手机号</label>
+                                <input id="secondPhone" name="secondPhone" class="input" type="text" placeholder="请输入手机号">
+                            </div>
+                            <div class="input-box">
+                                <label for="firstIdenty" class="label-name">验证码</label>
+                                <input name="firstIdenty" id="firstIdenty" class="input identify-input" type="text" placeholder="请输入验证码">
+                                <input type="button" id="iden-set" class="identify" value="получить доступ">
+                            </div>
+                            <div class="input-box">
+                                <label for="setPassword" class="label-name">设置密码</label>
+                                <input class="input" name="setPassword" id="setPassword" type="text" placeholder="请输入密码">
+                            </div>
+                            <div class="input-box">
+                                <label for="confirmPassword" class="label-name">确认密码</label>
+                                <input id="confirmPassword" name="confirmPassword" class="input" type="text" placeholder="请再次输入密码">
+                            </div>
+                            <!-- <input type="reset" name="reset" style="display: none;" /> -->
+                            <input class="modal-btn submit" type="submit" value="提交">
+                        </fieldset>
+                    </form>
                 </div>
-                <div class="input-box">
-                    <p class="label-name">验证码</p>
-                    <input class="input identify-input" type="text" placeholder="请输入验证码">
-                    <input type="button" id="iden-set" class="identify" value="получить доступ ">
+                <!-- 重置密码 -->
+                <div class="form-body password-type">
+                    <form class="cmxform" id="passwordForm" method="get" action="">
+                        <fieldset>
+                            <div class="input-box">
+                                <label for="rePhone" class="label-name">手机号</label>
+                                <input id="rePhone" name="rePhone" class="input" type="text" placeholder="请输入手机号">
+                            </div>
+                            <div class="input-box">
+                                <label for="secondIdenty" class="label-name">验证码</label>
+                                <input id="secondIdenty" name="secondIdenty" class="input identify-input" type="text" placeholder="请输入验证码">
+                                <input name="secondIdenty" type="button" id="iden-reset" class="identify" value="получить доступ">
+                            </div>
+                            <div class="input-box">
+                                <label for="resetPassword" class="label-name">重置密码</label>
+                                <input id="resetPassword" name="resetPassword" class="input" type="text" placeholder="请输入密码">
+                            </div>
+                            <div class="input-box">
+                                <label for="confirmRePassword" class="label-name">确认密码</label>
+                                <input id="confirmRePassword" name="confirmRePassword" class="input" type="text" placeholder="请再次输入密码">
+                            </div>
+                            <a href="#" class="modal-btn">提交</a>
+                        </fieldset>
+                    </form>
                 </div>
-                <div class="input-box">
-                    <p class="label-name">设置密码</p>
-                    <input class="input" type="text" placeholder="请输入密码">
-                </div>
-                <div class="input-box">
-                    <p class="label-name">确认密码</p>
-                    <input class="input" type="text" placeholder="请再次输入密码">
-                </div>
-                <a href="#" class="modal-btn">提交</a>
-            </div>
-            <div class="form-body password-type">
-                <div class="input-box">
-                    <p class="label-name">手机号</p>
-                    <input class="input" type="text" placeholder="请输入手机号">
-                </div>
-                <div class="input-box">
-                    <p class="label-name">验证码</p>
-                    <input class="input identify-input" type="text" placeholder="请输入验证码">
-                    <input type="button" id="iden-reset" class="identify" value="получить доступ ">
-                </div>
-                <div class="input-box">
-                    <p class="label-name">重置密码</p>
-                    <input class="input" type="text" placeholder="请输入密码">
-                </div>
-                <div class="input-box">
-                    <p class="label-name">确认密码</p>
-                    <input class="input" type="text" placeholder="请再次输入密码">
-                </div>
-                <a href="#" class="modal-btn">提交</a>
             </div>
         </div>
     </div>
 </body>
 <script src="static/js/jquery-1.8.3.min.js"></script>
-<script src="static/js/pinterest_grid.js"></script>
-<script src="static/js/template.js"></script>
+<script src="static/js/jquery.validate.min.js"></script>
+<script src="js/jquery.i18n.properties.js"></script>
 <script src="static/js/index.js"></script>
 <script src="static/js/main.js"></script>
-<script>
-    $("#user-box").pinterest_grid({
-        "no_columns": 2,
-        "padding_x": 20,
-        "padding_y": 20
-    });
-</script>
-<script type="text/html" id="test">
-    <!-- <ul>
-            <%for(var i in items){%>   
-            <li>
-             name:<%=items[i].name%>    val:<%=items[i].val%>
-         </li>
-         <%}%>
-     </ul> -->
-     <%for(var i in items){%> 
-     <div class="user-list">
-        <div class="money-num">
-            <%=items[i].num%>
-        </div>
-        <div class="head-img-box">
-            <div>
-                <img src="<%=items[i].imgurl%>" alt="">
-            </div>
-            <div>
-                <p class="user-name"><%=items[i].name%></p>
-                <p class="last-time"><%=items[i].date%></p>
-            </div>
-        </div>
-        <div class="user-detail">
-            <p><%=items[i].content%></p>
-        </div>
-    </div>
-    <%}%>
-</script>
+<script src="static/js/vue-2.5.16.js"></script>
+<script src="js/language.js"></script>
 
 </html>
 
@@ -382,3 +378,58 @@ padding_y：网格在Y轴方向的padding值。默认值为10像素。
 margin_bottom：网格底部的margin值。默认值为50像素。
 single_column_breakpoint：指定在视口多大时一行只显示一个网格。
  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title class="i18n" name='title'></title>
+    <meta id="i18n_pagename" content="index-common">
+    <meta name="viewport" content="width=device-width">
+    <meta name="keywords" content="" />
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="lan">
+    <div class="lan1"><label class="i18n" name="lan"></label></div>
+    <div class="lan2">
+        <select id="language">
+            <option value="zh-CN">中文简体</option>
+            <option value="zh-TW">中文繁體</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+</div>
+<br>
+<hr>
+<div><label class="i18n" name="hellomsg1"></label><label class="i18n" name="hellomsg2"></label></div><br>
+<div><label class="i18n" name="commonmsg1"></label><label class="i18n" name="commonmsg2"></label></div><br>
+<div>
+    <input type="search" class="i18n-input" selectname="searchPlaceholder" selectattr="placeholder">
+</div>
+
+<script src="js/jquery.js "></script>
+<script src="js/jquery.i18n.properties.js"></script>
+<script src="js/language.js"></script>
+</body>
+</html> -->

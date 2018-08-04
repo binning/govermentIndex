@@ -174,13 +174,19 @@
     display: inline-block;
     width: 1000px;
     position: relative;
+    column-count: 2;
+    column-gap: 0;
+    counter-reset: item-counter;
 }
 
 .main-content .user-share .user-box .user-list {
     background: #EDF2FF;
     padding: 20px;
-    position: absolute;
+    position: relative;
     width: 470px;
+    break-inside: avoid; 
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 .main-content .user-share .user-box .head-img-box>div {
     display: inline-block;
@@ -223,7 +229,7 @@
     border-radius: 13.5px 0 0 13.5px;
     color: #fff;
     position: absolute;
-    right: 0;
+    right:0;
     top: 20px;
 }
 
